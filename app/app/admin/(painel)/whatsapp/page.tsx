@@ -68,7 +68,7 @@ export default async function WhatsappPage({ searchParams }: { searchParams: Pro
                 <td className="whitespace-pre-line">{r.texto ?? <span className="text-gray-400">(mídia/sem texto)</span>}</td>
               </tr>
             ))}
-            {!rows.length && <tr><td colSpan={3} className="py-6 text-center text-gray-500">Nenhuma mensagem recebida (configure o webhook da Evolution).</td></tr>}
+            {!rows.length && <tr><td colSpan={3} className="py-6 text-center text-gray-500">Nenhuma mensagem recebida ainda.</td></tr>}
           </tbody>
         </table>
       </div>
@@ -77,7 +77,7 @@ export default async function WhatsappPage({ searchParams }: { searchParams: Pro
 
   return (
     <div>
-      <PageHeader titulo="WhatsApp" sub="Envio via Evolution API com aprovação humana obrigatória" />
+      <PageHeader titulo="WhatsApp" sub="Envio por QR code com aprovação humana obrigatória" />
       <div className="mb-4 flex gap-3 rounded-lg border border-orange-300 bg-orange-50 p-3 text-sm text-orange-900">
         <AlertTriangle className="mt-0.5 shrink-0" size={20} />
         <div>

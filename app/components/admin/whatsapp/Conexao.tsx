@@ -5,6 +5,7 @@ import { Loader2, Plug, PlugZap, QrCode, RefreshCw } from "lucide-react";
 import { ErroMsg } from "@/components/admin/ErroMsg";
 import { ok, useAcao } from "@/components/admin/useAcao";
 import { createClient } from "@/lib/supabase/client";
+import { ConexaoLocal } from "@/components/admin/whatsapp/ConexaoLocal";
 
 type Estado = { configurado: boolean; instancia?: string | null; existe?: boolean | null; estado?: string | null; qr?: string | null; pairingCode?: string | null; erro?: string };
 
@@ -82,17 +83,13 @@ export function Conexao({ ehAdmin, limite, horario }: { ehAdmin: boolean; limite
     <div className="grid gap-4 lg:grid-cols-2">
       <div className="card p-4">
         <div className="mb-3 flex items-center gap-2">
-          <h2 className="font-semibold">Instância Evolution</h2>
+          <h2 className="font-semibold">{st && !st.configurado ? "Conexão do WhatsApp" : "Instância Evolution"}</h2>
           <button className="btn-outline btn-sm ml-auto" onClick={() => carregar(false)} disabled={carregando}>
             {carregando ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />} Atualizar
           </button>
         </div>
         {!st && carregando && <p className="text-sm text-gray-500">Consultando…</p>}
-        {st && !st.configurado && (
-          <p className="text-sm text-gray-600">
-            Evolution API não configurada. Defina <code>EVOLUTION_API_URL</code>, <code>EVOLUTION_API_KEY</code> e <code>EVOLUTION_INSTANCE</code> nas variáveis de ambiente.
-          </p>
-        )}
+        {st && !st.configurado && <ConexaoLocal ehAdmin={ehAdmin} />}
         {st?.configurado && (
           <div className="space-y-3 text-sm">
             <div>
@@ -174,9 +171,9 @@ export function Conexao({ ehAdmin, limite, horario }: { ehAdmin: boolean; limite
           </p>
         )}
         <div className="mt-4 rounded bg-gray-50 p-3 text-xs text-gray-600">
-          <b>Como funciona:</b> um agendador (Coolify / cron) chama <code>POST /api/whatsapp/processar</code> a cada minuto. Cada chamada envia no máximo 5
-          mensagens aprovadas cujo horário já chegou, dentro do horário e do limite diário. Respostas “SAIR/PARAR/STOP/CANCELAR” viram opt-out
-          automaticamente pelo webhook.
+          <b>Como funciona:</b> o conector “WhatsApp Komilão” (no computador da loja) ou a Evolution API verificam a fila a cada poucos segundos e
+          enviam no máximo 5 mensagens aprovadas por vez, com pausas, dentro do horário e do limite diário. Respostas “SAIR/PARAR/STOP/CANCELAR”
+          viram opt-out automaticamente.
         </div>
       </div>
     </div>

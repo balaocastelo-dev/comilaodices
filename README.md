@@ -12,6 +12,7 @@ Loja virtual (varejo + atacado), captação de leads, CRM, WhatsApp com aprovaç
 | `app/` | Loja + painel admin (Next.js). Ver `app/README.md`. |
 | `supabase/migrations/` | Banco de dados: `0001_schema.sql` (tabelas, regras, segurança) e `0002_seed.sql` (7 produtos, etapas do CRM, templates de mensagem) e `0003_agendador_opcional.sql` (fila de WhatsApp a cada minuto via pg_cron). |
 | `leads/` | Captação de leads no OpenStreetMap + painel HTML com mapa. Saída em `leads/saida/`. |
+| `whatsapp-local/` | **Conector do WhatsApp por QR code** que roda no computador da loja (atalho “WhatsApp Komilão”). Envia a fila aprovada no painel e registra respostas/SAIR. Não precisa de servidor. |
 | `deploy/` | `GUIA_VERCEL.md`, `GUIA_COOLIFY.md` e o compose da Evolution API (WhatsApp). |
 | `docs/` | Logo e documentos. |
 

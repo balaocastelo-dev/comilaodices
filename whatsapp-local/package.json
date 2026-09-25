@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-komilao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Conector WhatsApp (QR code) da Doces Komilão — roda no computador da loja e envia a fila aprovada no painel",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": { "start": "node index.mjs" },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "baileys": "7.0.0-rc14",
+    "pino": "^9.7.0",
+    "qrcode": "^1.5.4"
+  }
+}

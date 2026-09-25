@@ -100,6 +100,7 @@ while ($true) {
     Write-Host '   4) Rodar loja + painel admin no computador'
     Write-Host '   5) Testar build de produção'
     Write-Host '   6) Abrir guia de deploy no Coolify'
+    Write-Host '   7) Ligar o WhatsApp (QR code)'
     Write-Host '   0) Sair'
     Write-Host ''
     $op = Read-Host '   Escolha'
@@ -111,6 +112,7 @@ while ($true) {
             '4' { Rodar-App }
             '5' { Testar-Build }
             '6' { Start-Process (Join-Path $Raiz 'deploy\GUIA_COOLIFY.md') }
+            '7' { Start-Process powershell.exe -ArgumentList '-ExecutionPolicy','Bypass','-File',(Join-Path $Raiz 'whatsapp-local\WhatsApp-Komilao.ps1') }
             '0' { exit }
             default { Erro 'Opção inválida' }
         }

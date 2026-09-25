@@ -11,3 +11,7 @@ __pycache__/
 .DS_Store
 *.zip
 /_logo_small.png
+whatsapp-local/node_modules/
+whatsapp-local/.env
+whatsapp-local/sessao-whatsapp/
+whatsapp-local/qrcode.png
